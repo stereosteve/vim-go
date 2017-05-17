@@ -80,6 +80,12 @@ syn region goTplComment start="\[\[\(- \)\?/\*" end="\*/\( -\)\?\]\]" display
 hi def link gotplAction PreProc
 hi def link goTplComment Comment
 
+" qtpl hacks
+syn keyword     gotplControl     contained   if else end range with template code space elseif endif endfor endfunc comment endcomment plain endplain stripspace endstripspace collapsespace endcollapsespace endswitch import func type struct return
+syn region gotplAction start="{%" end="%}" contains=@gotplLiteral,gotplControl,gotplFunctions,gotplVariable,goTplIdentifier display
+syn region goTplComment start="{%/\*" end="\*/%}" display
+" qtpl hacks
+
 let b:current_syntax = "gotexttmpl"
 
 " vim: sw=2 ts=2 et
